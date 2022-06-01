@@ -5,11 +5,12 @@
  */
 import { CSSProperties } from "react";
 
+export type ImageKeyEnum = "cat";
+
 export interface WebViewProps<Style> {
     name: string;
     style: Style[];
-    uri: string;
-    body: string;
+    imageKey: ImageKeyEnum;
 }
 
 export interface WebViewPreviewProps {
@@ -17,6 +18,5 @@ export interface WebViewPreviewProps {
     style: string;
     styleObject?: CSSProperties;
     readOnly: boolean;
-    uri: string;
-    body: string;
+    imageKey: ImageKeyEnum;
 }

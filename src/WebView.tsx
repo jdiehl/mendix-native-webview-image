@@ -1,16 +1,28 @@
 import { ReactElement, createElement } from "react";
-import { TextStyle, ViewStyle } from "react-native";
+import { View } from "react-native";
 import { WebView as RNWebView } from "react-native-webview";
 
-import { Style } from "@mendix/pluggable-widgets-tools";
-
 import { WebViewProps } from "../typings/WebViewProps";
+import { defaultWebViewStyle, WebViewStyle } from "./ui/Styles";
+import { flattenStyles } from "./piw-native-utils-internal";
 
-export interface CustomStyle extends Style {
-    container: ViewStyle;
-    label: TextStyle;
-}
+const images = {
+    cat: require("./ui/image.webp")
+};
 
-export function WebView({ uri, body }: WebViewProps<CustomStyle>): ReactElement {
-    return <RNWebView source={{ uri, body }} />;
+const webViewStyle = {
+    width: "100%",
+    height: "100%"
+};
+
+export function WebView({ style, imageKey }: WebViewProps<WebViewStyle>): ReactElement {
+    const styles = flattenStyles(defaultWebViewStyle, style);
+    const imageSrc = images[imageKey];
+    const html = `<html><body style="margin: 0"><img src="${imageSrc}" style="width: 100%; height: 100%; object-fit: contain"/></body></html>`;
+
+    return (
+        <View style={styles.container}>
+            <RNWebView style={webViewStyle} source={{ html }} />
+        </View>
+    );
 }

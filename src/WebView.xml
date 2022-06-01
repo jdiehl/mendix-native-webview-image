@@ -3,18 +3,17 @@
         supportedPlatform="Native"
         xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
-    <name>Web View</name>
-    <description>Web View for Native Mobile</description>
+    <name>Image Web View</name>
+    <description>Web view for displaying images</description>
     <icon/>
     <properties>
         <propertyGroup caption="Source">
-            <property key="uri" type="string" required="false">
-                <caption>Website URL</caption>
+            <property key="imageKey" type="enumeration" defaultValue="cat">
+                <caption>Image</caption>
                 <description />
-            </property>
-            <property key="body" type="string" required="false">
-                <caption>Website Body</caption>
-                <description>Specify either a URI or a body</description>
+                <enumerationValues>
+                    <enumerationValue key="cat">Nyan Cat</enumerationValue>
+                </enumerationValues>
             </property>
         </propertyGroup>
     </properties>
